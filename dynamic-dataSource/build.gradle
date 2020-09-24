@@ -1,0 +1,33 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group 'com.cm'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    maven { url "http://repo.maven.apache.org/maven2" }
+    mavenCentral()
+}
+
+dependencies {
+    //    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.2.0'
+    compile group: 'com.baomidou', name: 'dynamic-datasource-spring-boot-starter', version: '2.5.6'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+    compile group: 'com.alibaba', name: 'druid-spring-boot-starter', version: '1.1.20'
+    compile "org.apache.commons:commons-lang3:3.8.1"
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}

@@ -1,0 +1,29 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    dynamic:
+      primary: db1 # 配置默认数据库
+      datasource:
+        db1: # 数据源1配置(名字可以任意修改，在使用注解注入时要保持一致)
+          url: jdbc:mysql://127.0.0.1:3306/mutil_db?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=UTC
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        db2: # 数据源2配置
+          url: jdbc:mysql://127.0.0.1:3306/mutil_db2?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=UTC
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+      durid:
+        initial-size: 1
+        max-active: 20
+        min-idle: 1
+        max-wait: 60000
+  autoconfigure:
+    exclude:  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure # 去除druid配置
+# 日志配置
+logging:
+  level:
+    com.cm: debug
+    org.springframework: warn
